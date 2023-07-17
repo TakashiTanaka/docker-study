@@ -1,0 +1,17 @@
+version: '3' # composeファイルのバージョンを設定
+services: # コンテナの情報
+  db: # mysqlを入れるコンテナ
+    image: mysql:5.7 # mysqlの5.7のイメージ
+    networks: # 使用するネットワーク
+      - devnet
+    volumes: # ボリュームを指定
+      - ./db/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_pass
+
+networks:
+  devnet:

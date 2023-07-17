@@ -1,0 +1,14 @@
+version: '3' # composeファイルのバージョンを設定
+services: # コンテナの情報
+  myimage:
+    image: httpd
+    networks: # 使用するネットワーク
+      - devnet
+    volumes:
+      - ./htdocs:/usr/local/apache2/htdocs
+    ports:
+      - 8081:80
+    restart: always
+
+networks:
+  devnet:
